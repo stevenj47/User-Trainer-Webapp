@@ -4,6 +4,16 @@ class MessagesController < ApplicationController
 	def index
 		@sent = current_user.sent_messages
 		@received = current_user.received_messages
+		@read, @unread = [], []
+		@received.each do |recv|
+			if recv.read == true
+				@read << recv
+			else
+				@unread << recv
+				recv.read = true
+				recv.save
+			end
+		end
 	end
 
 	def new

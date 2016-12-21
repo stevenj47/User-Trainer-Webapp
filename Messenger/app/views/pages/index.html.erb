@@ -4,8 +4,11 @@
 	<h2> A simple app for exchanging messages! </h2>
 
 	<% if logged_in? %>
-		<%= link_to "Profile", user_path(current_user) %>
-		<%= link_to "Chat Log", messages_path %>
+		<%= link_to "Profile", user_path(current_user), class: 'btn btn-primary' %>
+		<%= link_to "messages", class: 'btn btn-primary' do %>
+    		Chat <%= content_tag :span, @num_unread, class: 'badge' %>
+		<% end %>
+		<%= link_to "Logout", logout_path, method: :delete, class: "btn btn-primary" %>
 	<% else %>
 		<%= link_to "Log In", login_path, class: "btn btn-lg btn-primary" %>
 	<% end %>
