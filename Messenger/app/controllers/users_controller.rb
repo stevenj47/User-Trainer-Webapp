@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 			log_in @user
 			redirect_to root_path
 		else
-			flash.now[:error] = "Incorrect Email/Password"
+			flash.now[:error] = "Invalid Signup Info"
 			render 'new'
 		end
 	end
@@ -31,6 +31,7 @@ class UsersController < ApplicationController
 		# Checks if user is logged in
     	def logged_in_user
       		unless logged_in?
+      			flash[:error] = "You must be logged in"
         		redirect_to login_path
       		end
     	end

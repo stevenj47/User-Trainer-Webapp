@@ -11,4 +11,13 @@ class User < ApplicationRecord
 	has_secure_password
 	validates :password, presence: true, 
 						 length: { minimum: 6 }
+
+	def is_user?
+		client == 1
+	end
+
+	def name_title
+		@title = is_user? ? ", USER" : ", TRAINER"
+		"#{name}" + @title
+	end
 end
