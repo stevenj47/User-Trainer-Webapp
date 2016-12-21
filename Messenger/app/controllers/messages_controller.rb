@@ -24,8 +24,10 @@ class MessagesController < ApplicationController
 	def create
 		@message = Message.new(message_params)
 		if @message.save
+			flash[:notice] = "Message sent"
 			redirect_to messages_path
 		else
+			flash.now[:error] = "Message not sent"
 			render 'new'
 		end
 	end

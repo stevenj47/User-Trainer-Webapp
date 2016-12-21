@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 			log_in @user
 			redirect_to root_path
 		else
+			flash.now[:error] = "Incorrect Email/Password"
 			render 'new'
 		end
 	end

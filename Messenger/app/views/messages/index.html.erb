@@ -1,47 +1,43 @@
 <h1> Messages </h1>
-
-<p> Unread Messages </p>
-<% @unread.each do |ur| %>
-<div class ="row">
-  <div class="col-md-6 col-md-offset-3">
-  <div class="panel panel-danger">
-    <div class="panel-heading">Sent by: <%= ur.sender.name %>, at: <%= ur.created_at %></div>
-  	<div class="panel-body">
-	  <p><%= ur.body %></p>
-	</div>
-  </div>
- </div>
-</div>
-<% end %>
-
-<p> Read Messages </p>
-<% @read.each do |r| %>
-<div class ="row">
-  <div class="col-md-6 col-md-offset-3">
-  <div class="panel panel-success">
-  	<div class="panel-heading">Sent by: <%= r.sender.name %>, at: <%= r.created_at %></div>
-  	<div class="panel-body">
-	  <p><%= r.body %></p>
-	</div>
-  </div>
- </div>
-</div>
-<% end %>
-
-<p> Sent Messages </p>
-<% @sent.each do |s| %>
-<div class ="row">
-  <div class="col-md-6 col-md-offset-3">
-  <div class="panel panel-primary">
-  	<div class="panel-heading">Sent to: <%= s.recipient.name %>, at: <%= s.created_at %></div>
-  	<div class="panel-body">
-	  <p><%= s.body %></p>
-	</div>
-  </div>
- </div>
-</div>
-<% end %>
-
-
 <%= link_to "New chat", new_message_path, class: "btn btn-primary"%>
 <%= link_to "Back to Home", root_path, class: "btn btn-primary"%>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+    <p> Unread Messages </p>
+    <% @unread.each do |ur| %>
+      <div class="panel panel-danger">
+        <div class="panel-heading">Sent by: <%= ur.sender.name %>, at: <%= ur.created_at %></div>
+        <div class="panel-body">
+          <p><%= ur.body %></p>
+        </div>
+      </div>
+    <% end %>
+    </div>
+
+    <div class="col-md-4">
+    <p> Read Messages </p>
+    <% @read.each do |r| %>
+      <div class="panel panel-success">
+        <div class="panel-heading">Sent by: <%= r.sender.name %>, at: <%= r.created_at %></div>
+        <div class="panel-body">
+          <p><%= r.body %></p>
+        </div>
+      </div>
+    <% end %>
+    </div>
+
+    <div class="col-md-4">
+    <p> Sent Messages </p>
+    <% @sent.each do |s| %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">Sent to: <%= s.recipient.name %>, at: <%= s.created_at %></div>
+        <div class="panel-body">
+          <p><%= s.body %></p>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
