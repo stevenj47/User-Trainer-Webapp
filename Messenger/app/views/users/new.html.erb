@@ -15,7 +15,7 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation %>
 
-      <%= select_tag(:type, options_for_select([['User', 1], ['Trainer', 2]])) %>
+      <%= select_tag(:client, options_for_select([['User', 1], ['Trainer', 2]], :selected => params[:client])) %>
 
       <%= f.submit "Create my account" %>
     <% end %>
