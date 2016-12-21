@@ -1,0 +1,15 @@
+<h1> Messages </h1>
+<p> Sent Messages </p>
+<% @sent.each do |s| %>
+	<p><%= s.body %></p>
+	<p><%= s.sender.name %></p>
+<% end %>
+
+<p> Received Messages </p>
+<% @received.each do |r| %>
+	<p><%= r.body %></p>
+	<p><%= r.sender.name %></p>
+<% end %>
+
+<%= link_to "New chat", new_message_path %>
+<%= link_to "Back to Profile", user_path(current_user) %>

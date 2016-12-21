@@ -1,0 +1,8 @@
+<h1> New Message </h1>
+
+<%= form_for(@message) do |f| %>
+	<%= f.text_area :body %>
+	<%= f.hidden_field :sender_id, :value => current_user.id %>
+	<%= f.collection_select :recipient_id, @recipients, :id, :name %>
+	<%= f.submit %>
+<% end %>
